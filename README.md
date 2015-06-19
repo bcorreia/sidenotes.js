@@ -41,12 +41,12 @@ Add `data-sidenote` attribute to elements within your document.
 ```
 
 ### CSS
-Add prefixes accordingly.
+Add prefixes accordingly. Update `translateX` value as desired.
 ```css
 /* required */
 .sidenote-open body     { transform: translateX(-400px); transition: transform .5s; overflow-y: hidden; }
 .sidenote-close body    { transform: translateX(0); transform .75s; transition: }
-.sidenote               { translateX(400px); display: flex; align-items: center; justify-content:center; }
+.sidenote               { transform: translateX(400px); display: flex; align-items: center; justify-content:center; }
 
 /* recommended */
 .sidenote               { position: fixed; right: 0; height: 100vh; width: 400px; border-left:1px solid #333; }
