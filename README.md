@@ -26,12 +26,12 @@ var page = document.querySelector('.page'),
 ### Callbacks
 ```javascript
 onBefore: function(event, element) {}   // called before animation starts
-                                        // event: open, close
-                                        // element: `.sidepanel` node
+                                        // event: open, close (string)
+                                        // element: `.sidepanel` (dom node)
 
 onAfter: function(event, element) {}    // called after animation ends
-                                        // event: open, close
-                                        // element: `.sidepanel` node
+                                        // event: open, close (string)
+                                        // element: `.sidepanel` (dom node)
 ```
 
 ### HTML data-attribute
