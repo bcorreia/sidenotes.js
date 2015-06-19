@@ -1,0 +1,52 @@
+html                                    { -webkit-font-smoothing: antialiased; }
+*, *:before, *:after                    { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+* :focus,
+* :active                               { outline: none !important; -moz-outline-style: none; }
+
+body                                    { font: normal normal 400 16px/1.6 'PT Sans', Helvetica, Arial, Verdana, sans-serif; color: #3C4245; background:#FDFDFD; }
+@media (min-width: 768px) {
+    body                                { font-size: 24px; }
+}
+h1                                      { font: normal normal 400 4.236em/1.2 'PT Sans', Helvetica, Arial, Verdana, sans-serif; color:#FCE9A1; margin: 0; }
+h2                                      { font: normal normal 400 1em/1.2 'PT Sans', Helvetica, Arial, Verdana, sans-serif; margin: 0 0 2em 0; }
+h3                                      { font: normal normal 700 1.333em/1.2 'PT Sans', Helvetica, Arial, Verdana, sans-serif; margin: 1em 0; }
+h3 span                                 { font-weight: 400; }
+a                                       { text-decoration: none; color: inherit; }
+a[data-sidenote]                        { font-weight: 700; text-decoration: underline; }
+a[data-sidenote]:hover                  { color: #FF6600; }
+p                                       { font-size: 16px; margin: 0 0 1em 0; }
+@media (min-width: 768px) {
+    p                                   { font-size: 19px; }
+}
+
+.page                                   { padding: 32px; }
+@media (min-width: 768px) {
+    .page                               { padding:3em; max-width: 880px; margin: 0 auto; }
+}
+
+header                                  { text-align: center; padding: 0 0 2em 0; }
+
+/* required
+--------------------------------------------- */
+.sidenote-open body                     { -webkit-transform: translateX(-400px); -moz-transform: translateX(-400px); transform: translateX(-400px); transition: -webkit-transform .5s; transition: -moz-transform .5s; transition: transform .5s; }
+.sidenote-close body                    { -webkit-transform: translateX(0); -moz-transform: translateX(0); transform: translateX(0); -webkit-transform .75s; transition: -moz-transform .75s; transition: transform .75s; transition: }
+.sidenote                               { -webkit-transform: translateX(400px); -moz-transform: translateX(400px); transform: translateX(400px); background: #3C4245; position: fixed; top:0; right: 0; height: 100vh; width: 400px; }
+.sidenote                               { display: flex; }
+
+/* recommended
+--------------------------------------------- */
+.sidenote .-inner                       { padding: 2em; }
+.sidenote .-inner p                     { color:#FDFDFD; }
+
+/* close
+--------------------------------------------- */
+.close                                  { position: absolute; top: 18px; right: 18px; background: url("../images/close.png") 0 0 no-repeat; background-size: contain; width: 34px; height: 34px; transition: opacity .5s; }
+
+/* helper
+--------------------------------------------- */
+.text-hide                              { font: 0/0 a; color: transparent; text-shadow: none; background-color: transparent; border: 0; }
+
+.documentation p span                   { font-size: .75em; background: #EAEAEA; padding: .25em; }
+
+.github                                 { background: url("../images/github.png")center center no-repeat; height: 48px; width: 48px; background-size: contain; opacity: .375; transition: opacity 1.25s ease; display: block; margin: 0 auto; }
+.github:hover                           { opacity: .75; }

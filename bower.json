@@ -1,0 +1,21 @@
+{
+  "name": "sidenotes.js",
+  "description": "Add sidenote capabilities to your page.",
+  "version": "1.0.0",
+  "authors": [
+    "Bruno Correia <mail@bcorreia.com>"
+  ],
+  "main": [
+    "dist/sidenotes.js",
+    "dist/sidenotes.min.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ]
+}
