@@ -25,16 +25,19 @@ var note = new Sidenotes(document.querySelector('.page'));
 ### Callbacks
 ```javascript
 onBefore: function(event, element) {}   // called before animation starts
-                                        // event: open, close | element: panel
+                                        // event: open, close
+                                        // element: `.sidepanel` node
 
 onAfter: function(event, element) {}    // called after animation ends
-                                        // event: open, close | element: panel
+                                        // event: open, close
+                                        // element: `.sidepanel` node
 ```
 
-### HTML data-attributes
-Add data-sidenote attribute to any element in your document.
+### HTML data-attribute
+Add `data-sidenote` attribute to elements within your document.
 ```html
-<a href="#" data-sidenote="a feeling of surprise…">Wonder</a>
+<!-- example -->
+<a href="#" data-sidenote="A feeling of surprise … ">Wonder</a>
 ```
 
 ### CSS
