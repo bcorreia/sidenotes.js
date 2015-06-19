@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/sidenotes.js.svg?style=flat)](https://www.npmjs.com/package/sidenotes.js)
 [![Build Status](https://travis-ci.org/bcorreia/sidenotes.js.svg?branch=master)](https://travis-ci.org/bcorreia/sidenotes.js)
 
-Data-list attribute implementation for input of type `range` <br />
+Add sidenote capabilities to your page.<br />
 [**Demo**](http://bcorreia.com/projects/sidenotes.js/src/demo.html)
 
 ---
@@ -19,30 +19,34 @@ npm install sidenotes.js
 
 ## Usage
 ```javascript
-var birds = new sidenotes(document.querySelector('form'), {
-    selector: "",
-    enumerate: false
-});
+var note = new Sidenotes(document.querySelector('.page'));
 ```
 
-| Options | Description | Default | Type
-:--- | :--- | ---: | ---:
-| `selector` | One or more CSS selectors separated by commas | `""` | `string`
-| `enumerate` | Enumerate list output | `false` | `boolean`
-
-### Example
-Add **data-list** attribute to input elements of type text. *A range type element will be inserted before each match.*
-```HTML
-<input type="text" class="foobar" name="birds" readonly data-list="…"; />
-<!-- readonly attribute is recommended -->
-```
-
-`JS` The first argument should be the form, or a parent element.
+### Callbacks
 ```javascript
-var birds = new sidenotes(document.querySelector('form'), {
-    selector: '.foobar', // one or more CSS selectors separated by commas
-    enumerate: true
-});
+onBefore: function(event, element) {}   // called before animation starts
+                                        // event: open, close | element: panel
+
+onAfter: function(event, element) {}    // called after animation ends
+                                        // event: open, close | element: panel
+```
+
+### HTML data-attributes
+Add data-sidenote attribute to any element in your document.
+```html
+<a href="#" data-sidenote="a feeling of surprise…">Wonder</a>
+```
+
+### CSS
+Add prefixes accordingly.
+```css
+/* required */
+.sidenote-open body     { transform: translateX(-400px); transition: transform .5s; overflow-y: hidden; }
+.sidenote-close body    { transform: translateX(0); transform .75s; transition: }
+.sidenote               { translateX(400px); display: flex; align-items: center; justify-content:center; }
+
+/* recommended */
+.sidenote               { position: fixed; right: 0; height: 100vh; width: 400px; border-left:1px solid #333; }
 ```
 ---
 

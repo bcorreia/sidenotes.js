@@ -1,4 +1,4 @@
-html                                    { -webkit-font-smoothing: antialiased; }
+html                                    { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 *, *:before, *:after                    { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 * :focus,
 * :active                               { outline: none !important; -moz-outline-style: none; }
@@ -28,15 +28,15 @@ header                                  { text-align: center; padding: 0 0 2em 0
 
 /* required
 --------------------------------------------- */
-.sidenote-open body                     { -webkit-transform: translateX(-400px); -moz-transform: translateX(-400px); transform: translateX(-400px); transition: -webkit-transform .5s; transition: -moz-transform .5s; transition: transform .5s; }
+.sidenote-open body                     { overflow-y: hidden; -webkit-transform: translateX(-400px); -moz-transform: translateX(-400px); transform: translateX(-400px); transition: -webkit-transform .5s; transition: -moz-transform .5s; transition: transform .5s; }
 .sidenote-close body                    { -webkit-transform: translateX(0); -moz-transform: translateX(0); transform: translateX(0); -webkit-transform .75s; transition: -moz-transform .75s; transition: transform .75s; transition: }
-.sidenote                               { -webkit-transform: translateX(400px); -moz-transform: translateX(400px); transform: translateX(400px); background: #3C4245; position: fixed; top:0; right: 0; height: 100vh; width: 400px; }
-.sidenote                               { display: flex; }
+.sidenote                               { -webkit-transform: translateX(400px); -moz-transform: translateX(400px); transform: translateX(400px); position: fixed; top:0; right: 0; height: 100vh; width: 400px; border-left:1px solid #333; }
+.sidenote                               { display: flex; display: -webkit-flex; display: -ms-flexbox; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; -ms-flex-pack:justify; }
 
 /* recommended
 --------------------------------------------- */
-.sidenote .-inner                       { padding: 2em; }
-.sidenote .-inner p                     { color:#FDFDFD; }
+.sidenote .-inner                       { padding: 3em 2em; position: relative; }
+.sidenote .-inner p > strong            { color: #FF6600; }
 
 /* close
 --------------------------------------------- */
@@ -48,5 +48,5 @@ header                                  { text-align: center; padding: 0 0 2em 0
 
 .documentation p span                   { font-size: .75em; background: #EAEAEA; padding: .25em; }
 
-.github                                 { background: url("../images/github.png")center center no-repeat; height: 48px; width: 48px; background-size: contain; opacity: .375; transition: opacity 1.25s ease; display: block; margin: 0 auto; }
-.github:hover                           { opacity: .75; }
+.github                                 { background: url("../images/github.png")center center no-repeat; height: 48px; width: 48px; background-size: contain; opacity: .75; transition: opacity 1.25s ease; display: block; margin: 0 auto; }
+.github:hover                           { opacity: .5; }

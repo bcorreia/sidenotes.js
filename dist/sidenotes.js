@@ -1,3 +1,10 @@
+/**
+ * sidenotes.js - version 1.0.0
+ *
+ * https://github.com/bcorreia/sidenotes.js.git
+ * Bruno Correia - mail@bcorreia.com
+ *
+ */
 var Sidenotes = (function() {
     'use strict';
 
