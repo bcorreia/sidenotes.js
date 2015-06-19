@@ -21,40 +21,40 @@ var Sidenotes = (function() {
         html: document.querySelector('html'),
 
         open: function(note) {
-            var panel = document.querySelector('body > .sidenote') || document.createElement('div'),
+            var sidenote = document.querySelector('body > .sidenote') || document.createElement('div'),
                 btn = '<a href="#" class="text-hide close">Close</a>';
 
             var callback = function() {
                 document.body.removeEventListener('transitionend', callback, false);
-                return this.settings.onAfter("open", panel); // callback fn
+                return this.settings.onAfter("open", sidenote); // callback fn
             }.bind(this);
 
             this.html.className = 'sidenote-open';
-            panel.className = 'sidenote';
-            panel.style.top = (window.scrollY + "px"); // fixed top position while using translate
-            panel.innerHTML = '<div class="-inner">' + btn + '<p>' + note + '</p></div>';
-            document.body.insertBefore(panel, document.body.firstChild); // prepend
+            sidenote.className = 'sidenote';
+            sidenote.style.top = (window.scrollY + "px"); // fixed top position while using translate
+            sidenote.innerHTML = '<div class="-inner">' + btn + '<p>' + note + '</p></div>';
+            document.body.insertBefore(sidenote, document.body.firstChild); // prepend
 
-            panel.querySelector('.close').addEventListener('click', function(event) {
+            sidenote.querySelector('.close').addEventListener('click', function(event) {
                 event.preventDefault();
-                this.close(panel);
+                this.close(sidenote);
             }.bind(this));
 
             document.body.addEventListener('transitionend', callback, false);
-            return this.settings.onBefore("open", panel); // callback fn
+            return this.settings.onBefore("open", sidenote); // callback fn
         },
 
-        close: function(panel) {
+        close: function(sidenote) {
             var callback = function() {
                 this.html.classList.remove('sidenote-open', 'sidenote-close');
                 document.body.removeEventListener('transitionend', callback, false);
-                return this.settings.onAfter("close", panel); // callback fn
+                return this.settings.onAfter("close", sidenote); // callback fn
             }.bind(this);
 
             document.body.addEventListener('transitionend', callback, false);
             this.html.classList.add('sidenote-close');
 
-            return this.settings.onBefore("close", panel); // callback fn
+            return this.settings.onBefore("close", sidenote); // callback fn
         }
     }
 
