@@ -51,10 +51,12 @@ Add `data-sidenote` attribute to elements within your document.
 ```
 
 ### CSS
+The following classes are inserted by default:
 ```css
 /* optional */
 .sidenote            { display: flex; align-items: center; justify-content:center; }
 .sidenote .-inner    { … }
+.sidenote .-close    { … } // closes sidenote on `click` event
 ```
 ---
 

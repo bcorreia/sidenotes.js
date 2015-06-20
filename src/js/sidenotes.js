@@ -16,7 +16,7 @@ var Sidenotes = (function() {
         open: function(note) {
             var settings = this.settings;
             var sidenote = document.querySelector('body > .sidenote') || document.createElement('div'),
-                btn = '<a href="#" class="text-hide close">Close</a>';
+                btn = '<a href="#" class="text-hide -close">Close</a>';
 
             var callback = function() {
                 document.body.removeEventListener('transitionend', callback, false);
@@ -53,7 +53,7 @@ var Sidenotes = (function() {
             sidenote.innerHTML = '<div class="-inner">' + btn + '<p>' + note + '</p></div>';
             document.body.insertBefore(sidenote, document.body.firstChild); // prepend
 
-            sidenote.querySelector('.close').addEventListener('click', function(event) {
+            sidenote.querySelector('.-close').addEventListener('click', function(event) {
                 event.preventDefault();
                 this.close(sidenote);
             }.bind(this));

@@ -1,5 +1,5 @@
 /**
- * sidenotes.js - version 1.2.0
+ * sidenotes.js - version 1.2.1
  *
  * https://github.com/bcorreia/sidenotes.js.git
  * Bruno Correia - mail@bcorreia.com
@@ -23,7 +23,7 @@ var Sidenotes = (function() {
         open: function(note) {
             var settings = this.settings;
             var sidenote = document.querySelector('body > .sidenote') || document.createElement('div'),
-                btn = '<a href="#" class="text-hide close">Close</a>';
+                btn = '<a href="#" class="text-hide -close">Close</a>';
 
             var callback = function() {
                 document.body.removeEventListener('transitionend', callback, false);
@@ -60,7 +60,7 @@ var Sidenotes = (function() {
             sidenote.innerHTML = '<div class="-inner">' + btn + '<p>' + note + '</p></div>';
             document.body.insertBefore(sidenote, document.body.firstChild); // prepend
 
-            sidenote.querySelector('.close').addEventListener('click', function(event) {
+            sidenote.querySelector('.-close').addEventListener('click', function(event) {
                 event.preventDefault();
                 this.close(sidenote);
             }.bind(this));
