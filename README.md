@@ -20,8 +20,16 @@ npm install sidenotes.js
 ## Usage
 ```javascript
 var page = document.querySelector('.page'),
-    note = new Sidenotes(page);
+    note = new Sidenotes(page, {
+        translate: '400px',
+        transition: '.5s'
+    });
 ```
+
+| Options | Description | Default | Type
+:--- | :--- | ---: | ---:
+| `translate` | A value for translateX(…) function | `400px` | `string`
+| `transition` | A value for transition-duration | `.5s` | `string`
 
 ### Callbacks
 ```javascript
