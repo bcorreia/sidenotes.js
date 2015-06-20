@@ -21,38 +21,39 @@ npm install sidenotes.js
 ```javascript
 var page = document.querySelector('.page'),
     note = new Sidenotes(page, {
-        translate: '400px', // x cord. value
-        transition: '.5s' // duration
+        translate: '400px',
+        transition: '.5s'
     });
 ```
 
+## Default Settings
 | Options | Description | Default | Type
 :--- | :--- | ---: | ---:
 | `translate` | A value for translateX function | `400px` | `string`
-| `transition` | A value for transition-duration | `.5s` | `string`
+| `transition` | A value for transition-duration property | `.5s` | `string`
 
 ### Callbacks
 ```javascript
-onBefore: function(event, element) {}   // called before animation starts
-                                        // event: open, close (string)
-                                        // element: `.sidepanel` (dom node)
+// called before animation starts
+onBefore: function(event, element) {}   // @event: open, close (string)
+                                        // @element: `.sidepanel` (dom node)
 
-onAfter: function(event, element) {}    // called after animation ends
-                                        // event: open, close (string)
-                                        // element: `.sidepanel` (dom node)
+// called after animation ends
+onAfter: function(event, element) {}    // @event: open, close (string)
+                                        // @element: `.sidepanel` (dom node)
 ```
 
 ### HTML data-attribute
 Add `data-sidenote` attribute to elements within your document.
 ```html
 <!-- example -->
-<a href="#" data-sidenote="A feeling of surprise … ">Wonder</a>
+<a href="#" data-sidenote="A feeling of surprise…">Wonder</a>
 ```
 
 ### CSS
 ```css
 /* optional */
-.sidenote               { display: flex; align-items: center; justify-content:center; border-left:1px solid #333; }
+.sidenote               { display: flex; align-items: center; justify-content:center; }
 .sidenote .-inner       { padding: 3em 2em; position: relative; }
 ```
 ---
