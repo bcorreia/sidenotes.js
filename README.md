@@ -51,7 +51,7 @@ Add `data-sidenote` attribute to elements within your document.
 
 ### CSS
 ```css
-/* suggested */
+/* optional */
 .sidenote               { display: flex; align-items: center; justify-content:center; border-left:1px solid #333; }
 .sidenote .-inner       { padding: 3em 2em; position: relative; }
 ```
