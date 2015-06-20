@@ -21,14 +21,14 @@ npm install sidenotes.js
 ```javascript
 var page = document.querySelector('.page'),
     note = new Sidenotes(page, {
-        translate: '400px',
-        transition: '.5s'
+        translate: '400px', // x cord. value
+        transition: '.5s' // duration
     });
 ```
 
 | Options | Description | Default | Type
 :--- | :--- | ---: | ---:
-| `translate` | A value for translateX(…) function | `400px` | `string`
+| `translate` | A value for translateX function | `400px` | `string`
 | `transition` | A value for transition-duration | `.5s` | `string`
 
 ### Callbacks
@@ -50,17 +50,10 @@ Add `data-sidenote` attribute to elements within your document.
 ```
 
 ### CSS
-Add browser prefixes accordingly.
-Update `translateX` value as desired.
 ```css
-/* required */
-.sidenote-open body     { transform: translateX(-400px); transition: transform .5s; overflow-y: hidden; }
-.sidenote-close body    { transform: translateX(0); transition: transform .5s; }
-.sidenote               { transform: translateX(400px); }
-
-/* recommended */
-.sidenote               { display: flex; align-items: center; justify-content:center; }
-.sidenote               { position: fixed; right: 0; height: 100vh; width: 400px; border-left:1px solid #333; }
+/* suggested */
+.sidenote               { display: flex; align-items: center; justify-content:center; border-left:1px solid #333; }
+.sidenote .-inner       { padding: 3em 2em; position: relative; }
 ```
 ---
 
