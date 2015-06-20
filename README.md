@@ -3,10 +3,10 @@
 [![npm version](https://img.shields.io/npm/v/sidenotes.js.svg?style=flat)](https://www.npmjs.com/package/sidenotes.js)
 [![Build Status](https://travis-ci.org/bcorreia/sidenotes.js.svg?branch=master)](https://travis-ci.org/bcorreia/sidenotes.js)
 
+---
 Add sidenote capabilities to your page.<br />
 [**Demo**](http://bcorreia.com/projects/sidenotes.js/src/demo.html)
 
----
 ## Getting Started
 You may install sidenotes.js using package managers, or download project [archive](https://github.com/bcorreia/sidenotes.js/archive/master.zip).<br />
 Installing via `bower` will bring in the dependencies as well.
@@ -14,7 +14,7 @@ Installing via `bower` will bring in the dependencies as well.
 bower install sidenotes.js
 npm install sidenotes.js
 
-# sidenotes.min.js           minified version of sidenotes.js
+#sidenotes.min.js  (no dependencies required)
 ```
 
 ## Usage
@@ -35,12 +35,12 @@ var page = document.querySelector('.page'),
 ### Callbacks
 ```javascript
 // called before animation starts
-onBefore: function(event, element) {}   // event: open, close (string)
-                                        // element: `.sidepanel` (dom node)
+onBefore: function(event, element) {}   // event: open, close     (string)
+                                        // element: `.sidepanel`  (dom node)
 
 // called after animation ends
-onAfter: function(event, element) {}    // event: open, close (string)
-                                        // element: `.sidepanel` (dom node)
+onAfter: function(event, element) {}    // event: open, close     (string)
+                                        // element: `.sidepanel`  (dom node)
 ```
 
 ### HTML data-attribute
