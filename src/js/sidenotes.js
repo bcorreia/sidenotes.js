@@ -2,6 +2,8 @@ var Sidenotes = (function() {
     'use strict';
 
     var defaults = {
+        translate: '400px',
+        transition: '.5s',
         onBefore: function() {},
         onAfter: function() {}
     };
@@ -11,20 +13,43 @@ var Sidenotes = (function() {
     }
 
     var notes = {
-        html: document.querySelector('html'),
-
         open: function(note) {
+            var settings = this.settings;
             var sidenote = document.querySelector('body > .sidenote') || document.createElement('div'),
                 btn = '<a href="#" class="text-hide close">Close</a>';
 
             var callback = function() {
                 document.body.removeEventListener('transitionend', callback, false);
-                return this.settings.onAfter("open", sidenote); // callback fn
+                return settings.onAfter("open", sidenote); // callback fn
             }.bind(this);
 
-            this.html.className = 'sidenote-open';
+            addStyles(document.body, {
+                'overflow': 'hidden',
+                '-webkit-transform': 'translateX(-'+ settings.translate +')',
+                '-moz-transform': 'translateX(-'+ settings.translate +')',
+                'transform': 'translateX(-'+ settings.translate +')',
+                'transition': 'all ' + settings.transition
+            });
+
             sidenote.className = 'sidenote';
-            sidenote.style.top = (window.scrollY + "px"); // fixed top position while using translate
+            addStyles(sidenote, {
+                'position': 'fixed',
+                'top': (window.scrollY + 'px'), // fixed top position while using translate
+                'right': 0,
+                'height': '100vh',
+                'width': settings.translate,
+                '-webkit-transform': 'translateX('+ settings.translate +')',
+                '-moz-transform': 'translateX('+ settings.translate +')',
+                'transform': 'translateX('+ settings.translate +')'
+            });
+
+            // little hack for safari
+            if ( !navigator.userAgent.match(/Chrome|Firefox/) ) {
+                window.addEventListener("scroll", debounce(function() {
+                    sidenote.style.top = (window.scrollY + "px");
+                }, 100), false);
+            }
+
             sidenote.innerHTML = '<div class="-inner">' + btn + '<p>' + note + '</p></div>';
             document.body.insertBefore(sidenote, document.body.firstChild); // prepend
 
@@ -39,14 +64,18 @@ var Sidenotes = (function() {
 
         close: function(sidenote) {
             var callback = function() {
-                this.html.classList.remove('sidenote-open', 'sidenote-close');
+                document.body.style.cssText = '';
                 document.body.removeEventListener('transitionend', callback, false);
                 return this.settings.onAfter("close", sidenote); // callback fn
             }.bind(this);
 
-            document.body.addEventListener('transitionend', callback, false);
-            this.html.classList.add('sidenote-close');
+            addStyles(document.body, {
+                '-webkit-transform': 'translateX(0)',
+                '-moz-transform': 'translateX(0)',
+                'transform': 'translateX(0)'
+            });
 
+            document.body.addEventListener('transitionend', callback, false);
             return this.settings.onBefore("close", sidenote); // callback fn
         }
     }
@@ -79,26 +108,60 @@ var Sidenotes = (function() {
         return extended;
     }
 
+    /**
+     * debounce
+     * @param {Object} function
+     * @param {Number} wait
+     *
+     */
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        }
+    }
+
+    /**
+     * add styles
+     * @param {Object} dom element
+     * @param {Object} properties
+     */
+    function addStyles(element, object) {
+        for (var property in object) {
+            element.style[property] = object[property];
+        }
+    }
+
+    /**
+     * constructor
+     * @param {Object} stage: dom element
+     * @param {Object} options
+     *
+     */
     Sidenotes = function(stage, options) {
         var settings = extend(defaults, options || {}),
             nodes = stage.querySelectorAll('[data-sidenote]');
 
-        var init = function() {
-            this.addEventListener('click', function(event) {
-                event.preventDefault();
-
-                var note = this.getAttribute('data-sidenote'),
-                    sidenote = Object.create(notes, {
-                        settings: { value: settings },
-                        note: { value: note }
-                    });
-
-                sidenote.open(note);
-            });
+        var init = function(event) {
+            event.preventDefault();
+            var note = this.getAttribute('data-sidenote'),
+                sidenote = Object.create(notes, {
+                    settings: { value: settings },
+                    note: { value: note }
+                });
+            sidenote.open(note);
         };
 
         forEach(nodes, function(element) {
-            init.call(element);
+            element.addEventListener('click', init);
         });
     }
 

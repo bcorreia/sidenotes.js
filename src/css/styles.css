@@ -25,16 +25,15 @@ p                                       { font-size: 16px; margin: 0 0 1em 0; }
 }
 
 header                                  { text-align: center; padding: 0 0 2em 0; }
+.documentation p span                   { font-size: .75em; background: #EAEAEA; padding: .25em; }
 
-/* required
---------------------------------------------- */
-.sidenote-open body                     { overflow-y: hidden; -webkit-transform: translateX(-400px); -moz-transform: translateX(-400px); transform: translateX(-400px); transition: -webkit-transform .5s; transition: -moz-transform .5s; transition: transform .5s; }
-.sidenote-close body                    { -webkit-transform: translateX(0); -moz-transform: translateX(0); transform: translateX(0); -webkit-transform .75s; transition: -moz-transform .75s; transition: transform .75s; transition: }
-.sidenote                               { -webkit-transform: translateX(400px); -moz-transform: translateX(400px); transform: translateX(400px); position: fixed; top:0; right: 0; height: 100vh; width: 400px; border-left:1px solid #333; }
-.sidenote                               { display: flex; display: -webkit-flex; display: -ms-flexbox; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; -ms-flex-pack:justify; }
+.github                                 { background: url("../images/github.png")center center no-repeat; height: 48px; width: 48px; background-size: contain; opacity: .75; transition: opacity 1.25s ease; display: block; margin: 0 auto; }
+.github:hover                           { opacity: .5; }
 
 /* recommended
 --------------------------------------------- */
+.sidenote                               { border-left:1px solid #333; }
+.sidenote                               { display: flex; display: -webkit-flex; display: -ms-flexbox; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; -ms-flex-pack:justify; }
 .sidenote .-inner                       { padding: 3em 2em; position: relative; }
 .sidenote .-inner p > strong            { color: #FF6600; }
 
@@ -45,8 +44,3 @@ header                                  { text-align: center; padding: 0 0 2em 0
 /* helper
 --------------------------------------------- */
 .text-hide                              { font: 0/0 a; color: transparent; text-shadow: none; background-color: transparent; border: 0; }
-
-.documentation p span                   { font-size: .75em; background: #EAEAEA; padding: .25em; }
-
-.github                                 { background: url("../images/github.png")center center no-repeat; height: 48px; width: 48px; background-size: contain; opacity: .75; transition: opacity 1.25s ease; display: block; margin: 0 auto; }
-.github:hover                           { opacity: .5; }
