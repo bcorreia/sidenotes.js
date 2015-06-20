@@ -14,7 +14,7 @@ Installing via `bower` will bring in the dependencies as well.
 bower install sidenotes.js
 npm install sidenotes.js
 
-#sidenotes.min.js  (no dependencies required)
+#sidenotes.min.js (no dependencies required)
 ```
 
 ## Usage
