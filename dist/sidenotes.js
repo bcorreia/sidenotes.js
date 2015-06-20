@@ -1,5 +1,5 @@
 /**
- * sidenotes.js - version 1.0.0
+ * sidenotes.js - version 1.2.0
  *
  * https://github.com/bcorreia/sidenotes.js.git
  * Bruno Correia - mail@bcorreia.com
