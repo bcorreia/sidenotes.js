@@ -35,12 +35,12 @@ var page = document.querySelector('.page'),
 ### Callbacks
 ```javascript
 // called before animation starts
-onBefore: function(event, element) {}   // @event: open, close (string)
-                                        // @element: `.sidepanel` (dom node)
+onBefore: function(event, element) {}   // event: open, close (string)
+                                        // element: `.sidepanel` (dom node)
 
 // called after animation ends
-onAfter: function(event, element) {}    // @event: open, close (string)
-                                        // @element: `.sidepanel` (dom node)
+onAfter: function(event, element) {}    // event: open, close (string)
+                                        // element: `.sidepanel` (dom node)
 ```
 
 ### HTML data-attribute
@@ -53,8 +53,8 @@ Add `data-sidenote` attribute to elements within your document.
 ### CSS
 ```css
 /* optional */
-.sidenote               { display: flex; align-items: center; justify-content:center; }
-.sidenote .-inner       { padding: 3em 2em; position: relative; }
+.sidenote            { display: flex; align-items: center; justify-content:center; }
+.sidenote .-inner    { … }
 ```
 ---
 
