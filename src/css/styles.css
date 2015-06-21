@@ -35,9 +35,10 @@ header                                  { text-align: center; padding: 0 0 2em 0
 --------------------------------------------- */
 .sidenote                               { border-left:1px solid #333; }
 .sidenote                               { display: flex; display: -webkit-flex; display: -ms-flexbox; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; -ms-flex-pack:justify; }
-.sidenote .-inner                       { padding: 3em 2em; position: relative; }
+.sidenote .-inner                       { padding: 4em 2em; position: relative; }
 .sidenote .-inner p > strong            { color: #FF6600; }
-.sidenote .-close                       { position: absolute; top: 18px; right: 18px; background: url("../images/close.png") 0 0 no-repeat; background-size: contain; width: 34px; height: 34px; transition: opacity .5s; }
+.sidenote .-close                       { position: absolute; top: 0; left: 50%; background: url("../images/close.png") 0 0 no-repeat; background-size: contain; width: 34px; height: 34px; transition: opacity .5s; }
+.sidenote .-close                       { -webkit-transform: translateX(-50%); -moz-transform: translateX(-50%); transform: translateX(-50%); }
 
 /* helper
 --------------------------------------------- */

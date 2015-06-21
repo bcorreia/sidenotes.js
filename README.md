@@ -21,16 +21,16 @@ npm install sidenotes.js
 ```javascript
 var page = document.querySelector('.page'),
     note = new Sidenotes(page, {
-        translate: ['90vw', '45vw', '33.3vw'], // **read below
+        translate: ['100vw', '60vw', '45vw', '33.3vw'], // **read below
         transition: '.5s'
     });
 ```
-\*\* Array: @media-query (min-width) for the following breakpoints respectively: [768px, 992px, 1200px]
+\*\* Array: @media (min-width) for the following breakpoints respectively: [`less than 768px`, `768px and up`, `992px and up`, `1200px and up`]
 
 ## Default Settings
 | Options | Description | Default | Type
 :--- | :--- | ---: | ---:
-| `translate` | Values for translateX fn. | `['90vw', '45vw', '33.3vw']` | `array`
+| `translate` | Values for translateX fn. | `['100vw', '60vw', '45vw', '33.3vw']` | `array`
 | `transition` | A value for transition-duration property | `.5s` | `string`
 
 ### Callbacks

@@ -1,5 +1,5 @@
 /**
- * sidenotes.js - version 1.2.1
+ * sidenotes.js - version 1.2.2
  *
  * https://github.com/bcorreia/sidenotes.js.git
  * Bruno Correia - mail@bcorreia.com
@@ -9,17 +9,13 @@ var Sidenotes = (function() {
     'use strict';
 
     var defaults = {
-        translate: ['90vw', '45vw', '33.3vw'],
+        translate: ['100vw', '60vw', '45vw', '33.3vw'],
         transition: '.5s',
         onBefore: function() {},
         onAfter: function() {}
     };
 
-    var forEach = function(list, callback) {
-        Array.prototype.forEach.call(list, callback);
-    }
-
-    var notes = {
+    var methods = {
         open: function(note) {
             var settings = this.settings,
                 translate;
@@ -35,11 +31,14 @@ var Sidenotes = (function() {
             if (document.documentElement.clientWidth < 768) {
                 translate = settings.translate[0];
             }
-            if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1200) {
+            if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 992) {
                 translate = settings.translate[1];
             }
-            if (document.documentElement.clientWidth >= 1200) {
+            if (document.documentElement.clientWidth >= 992 && document.documentElement.clientWidth < 1200) {
                 translate = settings.translate[2];
+            }
+            if (document.documentElement.clientWidth >= 1200) {
+                translate = settings.translate[3];
             }
 
             addStyles(document.body, {
@@ -97,6 +96,10 @@ var Sidenotes = (function() {
             document.body.addEventListener('transitionend', callback, false);
             return this.settings.onBefore("close", sidenote); // callback fn
         }
+    }
+
+    var forEach = function(list, callback) {
+        Array.prototype.forEach.call(list, callback);
     }
 
     /**
@@ -169,18 +172,16 @@ var Sidenotes = (function() {
         var settings = extend(defaults, options || {}),
             nodes = stage.querySelectorAll('[data-sidenote]');
 
-        var init = function(event) {
-            event.preventDefault();
-            var note = this.getAttribute('data-sidenote'),
-                sidenote = Object.create(notes, {
-                    settings: { value: settings },
-                    note: { value: note }
-                });
-            sidenote.open(note);
-        };
+        var sidenotes = Object.create(methods, {
+            settings: { value: settings }
+        });
 
-        forEach(nodes, function(element) {
-            element.addEventListener('click', init);
+        nodes && forEach(nodes, function(element) {
+            element.addEventListener('click', function(event) {
+                event.preventDefault();
+                var note = this.getAttribute('data-sidenote');
+                sidenotes.open(note);
+            });
         });
     }
 

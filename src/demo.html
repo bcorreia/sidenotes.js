@@ -44,7 +44,7 @@
     <script src="./js/sidenotes.js"></script>
     <script>
         var note = new Sidenotes(document.querySelector('.page'), {
-            translate: ['90vw', '45vw', '33.3vw'], // @media (min-width) for [768px, 992px, 1200px]
+            translate: ['100vw', '60vw', '45vw', '33.3vw'], // @media (min-width) for [less than 768px, 768px and up, 992px and up, 1200px and up]
             onBefore: function(event, element) {
                 console.log("onBefore: " + event);
                 console.log(element);
