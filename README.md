@@ -13,31 +13,31 @@ You may install sidenotes.js using package managers, or download project [archiv
 bower install sidenotes.js
 npm install sidenotes.js
 
-#sidenotes.min.js (no dependencies required)
+# sidenotes.min.js (minified version)
+# no dependencies required
 ```
 
 ## Usage
 ```javascript
 var page = document.querySelector('.page'),
     sidenotes = new Sidenotes(page, {
-        translate: {
-            '1200px'  : '33.3vw',
-            '992px'   : '45vw',
-            '768px'   : '60vw',
+        translate: { // read below
+            '992px'   : '35vw',
+            '768px'   : '50vw',
             'default' : '100vw'
         },
         'transition-duration': '.5s'
     });
 ```
-`translate`<br />
-**key:** @media (min-width) breakpoint value.<br />
-**value:** value to be applied to translateX function. (units: vw or px)
+Add as many items as needed to the `translate` object.<br />
+**key:** a breakpoint value to be applied to `@media (min-width: xx)`<br />
+**value:** a value to be applied to translate function. `(units: vw or px)`
 
 ## Default Settings
-| Options | Default | Type
-:--- | :--- | ---:
-| `translate` | `{ '1200px': '33.3vw', '992px': '45vw',`<br /> `'768px': '60vw', 'default': '100vw' }` | `object`
-| `transition-duration` | `.5s` | `string`
+| Options | Default
+:--- | :---
+| `translate` | `{'992px':'35vw', 768px':'50vw', 'default':'100vw'}`
+| `transition-duration` | `'.5s'`
 
 ### Callbacks
 ```javascript
