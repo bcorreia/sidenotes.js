@@ -9,7 +9,7 @@ var Sidenotes = (function() {
     'use strict';
 
     var defaults = {
-        translate: '400px',
+        translate: ['90vw', '45vw', '33.3vw'],
         transition: '.5s',
         onBefore: function() {},
         onAfter: function() {}
@@ -21,7 +21,9 @@ var Sidenotes = (function() {
 
     var notes = {
         open: function(note) {
-            var settings = this.settings;
+            var settings = this.settings,
+                translate;
+
             var sidenote = document.querySelector('body > .sidenote') || document.createElement('div'),
                 btn = '<a href="#" class="text-hide -close">Close</a>';
 
@@ -30,11 +32,21 @@ var Sidenotes = (function() {
                 return settings.onAfter("open", sidenote); // callback fn
             }.bind(this);
 
+            if (document.documentElement.clientWidth < 768) {
+                translate = settings.translate[0];
+            }
+            if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1200) {
+                translate = settings.translate[1];
+            }
+            if (document.documentElement.clientWidth >= 1200) {
+                translate = settings.translate[2];
+            }
+
             addStyles(document.body, {
                 'overflow': 'hidden',
-                '-webkit-transform': 'translateX(-'+ settings.translate +')',
-                '-moz-transform': 'translateX(-'+ settings.translate +')',
-                'transform': 'translateX(-'+ settings.translate +')',
+                '-webkit-transform': 'translateX(-'+ translate +')',
+                '-moz-transform': 'translateX(-'+ translate +')',
+                'transform': 'translateX(-'+ translate +')',
                 'transition': 'all ' + settings.transition
             });
 
@@ -44,10 +56,10 @@ var Sidenotes = (function() {
                 'top': (window.scrollY + 'px'), // fixed top position while using translate
                 'right': 0,
                 'height': '100vh',
-                'width': settings.translate,
-                '-webkit-transform': 'translateX('+ settings.translate +')',
-                '-moz-transform': 'translateX('+ settings.translate +')',
-                'transform': 'translateX('+ settings.translate +')'
+                'width': translate,
+                '-webkit-transform': 'translateX('+ translate +')',
+                '-moz-transform': 'translateX('+ translate +')',
+                'transform': 'translateX('+ translate +')'
             });
 
             // little hack for safari

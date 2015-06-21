@@ -7,7 +7,7 @@ body                                    { font: normal normal 400 16px/1.6 'PT S
 @media (min-width: 768px) {
     body                                { font-size: 24px; }
 }
-h1                                      { font: normal normal 400 4.236em/1.2 'PT Sans', Helvetica, Arial, Verdana, sans-serif; color:#FCE9A1; margin: 0; }
+h1                                      { font: normal normal 400 3.375em/1.2 'PT Sans', Helvetica, Arial, Verdana, sans-serif; color:#FCE9A1; margin: 0; }
 h2                                      { font: normal normal 400 1em/1.2 'PT Sans', Helvetica, Arial, Verdana, sans-serif; margin: 0 0 2em 0; }
 h3                                      { font: normal normal 700 1.333em/1.2 'PT Sans', Helvetica, Arial, Verdana, sans-serif; margin: 1em 0; }
 h3 span                                 { font-weight: 400; }
@@ -16,6 +16,7 @@ a[data-sidenote]                        { font-weight: 700; text-decoration: und
 a[data-sidenote]:hover                  { color: #FF6600; }
 p                                       { font-size: 16px; margin: 0 0 1em 0; }
 @media (min-width: 768px) {
+    h1                                  { font-size: 4.236em; }
     p                                   { font-size: 19px; }
 }
 

@@ -23,7 +23,7 @@
         </header>
         <hr />
 
-        <h3>Open sidenotes by cliking the links below.</h3>
+        <h3>Click on the links below to open the sidenotes:</h3>
         <p>While the two headsmen were engaged in making fast cords to his flukes, and in other ways getting the mass in readiness for towing, some <a href="#" data-sidenote="<strong>Conversation:</strong> the informal exchange of ideas by spoken words: “the two men were deep in conversation”.">conversation</a> ensued between them.</p>
         <p>“I <a href="#" data-sidenote="<strong>Wonder:</strong> a feeling of surprise mingled with admiration, caused by something beautiful, unexpected, unfamiliar, or inexplicable: “he had stood in front of it, observing the intricacy of the ironwork with the wonder of a child.”">wonder</a> what the old man wants with this lump of foul lard,” said Stubb, not without some disgust at the thought of having to do with so ignoble a <a href="#" data-sidenote="<strong>Leviathan:</strong> a very large aquatic creature, especially a whale: “the great leviathans of the deep.”">leviathan</a>.</p>
         <p>“Wants with it?” said Flask, coiling some spare line in the boat’s bow, “did you never hear that the ship which but once has a Sperm Whale's head hoisted on her <a href="#" data-sidenote="<strong>Starboard:</strong> the side of a ship or aircraft that is on the right when one is facing forward.">starboard</a> side, and at the same time a Right Whale’s on the larboard; did you never hear, Stubb, that that ship can never afterwards capsize?”</p>
@@ -44,6 +44,7 @@
     <script src="./js/sidenotes.js"></script>
     <script>
         var note = new Sidenotes(document.querySelector('.page'), {
+            translate: ['90vw', '45vw', '33.3vw'], // @media (min-width) for [768px, 992px, 1200px]
             onBefore: function(event, element) {
                 console.log("onBefore: " + event);
                 console.log(element);
