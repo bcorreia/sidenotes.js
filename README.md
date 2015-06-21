@@ -45,10 +45,11 @@ onAfter: function(event, element) {}    // event: open, close     (string)
 ```
 
 ### HTML data-attribute
-Add `data-sidenote` attribute to elements within your document.
+Add `data-sidenote` attribute to any element(s) in your document.
 ```html
 <!-- example -->
-<a href="#" data-sidenote="A feeling of surprise…">Wonder</a>
+<a href="#" data-sidenote="A feeling of surprise.">Wonder</a>
+<a href="#" data-sidenote="Greeting to begin a conversation.">Hello</a>
 ```
 
 ### CSS
