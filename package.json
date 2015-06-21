@@ -1,6 +1,6 @@
 {
   "name": "sidenotes.js",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Add sidenote capabilities to your page.",
   "main": "dist/sidenotes.js",
   "repository": {

@@ -1,5 +1,5 @@
 /**
- * sidenotes.js - version 1.2.2
+ * sidenotes.js - version 1.2.3
  *
  * https://github.com/bcorreia/sidenotes.js.git
  * Bruno Correia - mail@bcorreia.com
@@ -9,8 +9,13 @@ var Sidenotes = (function() {
     'use strict';
 
     var defaults = {
-        translate: ['100vw', '60vw', '45vw', '33.3vw'],
-        transition: '.5s',
+        translate: {
+            '1200px'  : '33.3vw',
+            '992px'   : '45vw',
+            '768px'   : '60vw',
+            'default' : '100vw'
+        },
+        'transition-duration': '.5s',
         onBefore: function() {},
         onAfter: function() {}
     };
@@ -18,7 +23,14 @@ var Sidenotes = (function() {
     var methods = {
         open: function(note) {
             var settings = this.settings,
-                translate;
+                translate = settings.translate['default'];
+
+            for ( var prop in settings.translate ) {
+                if (window.matchMedia('(min-width: '+ prop +')').matches) {
+                    translate = settings.translate[prop];
+                    break;
+                }
+            }
 
             var sidenote = document.querySelector('body > .sidenote') || document.createElement('div'),
                 btn = '<a href="#" class="text-hide -close">Close</a>';
@@ -28,25 +40,12 @@ var Sidenotes = (function() {
                 return settings.onAfter("open", sidenote); // callback fn
             }.bind(this);
 
-            if (document.documentElement.clientWidth < 768) {
-                translate = settings.translate[0];
-            }
-            if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 992) {
-                translate = settings.translate[1];
-            }
-            if (document.documentElement.clientWidth >= 992 && document.documentElement.clientWidth < 1200) {
-                translate = settings.translate[2];
-            }
-            if (document.documentElement.clientWidth >= 1200) {
-                translate = settings.translate[3];
-            }
-
             addStyles(document.body, {
                 'overflow': 'hidden',
                 '-webkit-transform': 'translateX(-'+ translate +')',
                 '-moz-transform': 'translateX(-'+ translate +')',
                 'transform': 'translateX(-'+ translate +')',
-                'transition': 'all ' + settings.transition
+                'transition': 'all ' + settings['transition-duration']
             });
 
             sidenote.className = 'sidenote';
@@ -103,32 +102,19 @@ var Sidenotes = (function() {
     }
 
     /**
-     * deep extend: merge defaults with options
-     * @param {Objects} objects
-     * @return {Object} merged values of default settings and options
+     * merge defaults with user options
+     * @param {Object} defaults Default settings
+     * @param {Object} options User options
+     * @returns {Object} Merged values of defaults and options
      *
      */
-    function extend(objects) {
-        var extended = {};
-        var merge = function (obj) {
-            for (var prop in obj) {
-                if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-                    if ( Object.prototype.toString.call(obj[prop]) === '[object Object]' ) {
-                        extended[prop] = extend(extended[prop], obj[prop]);
-                    }
-                    else {
-                        extended[prop] = obj[prop];
-                    }
-                }
-            }
-        };
-        merge(arguments[0]);
-        for (var i = 1; i < arguments.length; i++) {
-            var obj = arguments[i];
-            merge(obj);
-        }
-        return extended;
-    }
+     function extend(defaults, options) {
+         var a = Object.create(defaults);
+         Object.keys(options).map(function (prop) {
+             prop in a && (a[prop] = options[prop]);
+         });
+         return a;
+     }
 
     /**
      * debounce

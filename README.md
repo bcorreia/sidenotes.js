@@ -19,19 +19,25 @@ npm install sidenotes.js
 ## Usage
 ```javascript
 var page = document.querySelector('.page'),
-    note = new Sidenotes(page, {
-        translate: ['100vw', '60vw', '45vw', '33.3vw'], // read below
-        transition: '.5s' // 500ms
+    sidenotes = new Sidenotes(page, {
+        translate: {
+            '1200px'  : '33.3vw',
+            '992px'   : '45vw',
+            '768px'   : '60vw',
+            'default' : '100vw'
+        },
+        'transition-duration': '.5s'
     });
 ```
-**translate** @media (min-width) for the following breakpoints respectively:<br />
-`less than 768px, 768px and up, 992px and up, 1200px and up`
+`translate`<br />
+**key:** @media (min-width) breakpoint value.<br />
+**value:** value to be applied to translateX function. (units: vw or px)
 
 ## Default Settings
-| Options | Description | Default | Type
-:--- | :--- | :--- | ---:
-| `translate` | translate values | `['100vw', '60vw', '45vw', '33.3vw']` | `array`
-| `transition` | transition-duration | `.5s` | `string`
+| Options | Default | Type
+:--- | :--- | ---:
+| `translate` | `{ '1200px': '33.3vw', '992px': '45vw',`<br /> `'768px': '60vw', 'default': '100vw' }` | `object`
+| `transition-duration` | `.5s` | `string`
 
 ### Callbacks
 ```javascript
