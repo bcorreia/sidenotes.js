@@ -21,7 +21,8 @@ npm install sidenotes.js
 ```javascript
 var page = document.querySelector('.page'),
     sidenotes = new Sidenotes(page, {
-        translate: { // read below
+        orientation: 'right',
+        translate: {
             '992px'   : '35vw',
             '768px'   : '50vw',
             'default' : '100vw'
@@ -33,21 +34,22 @@ Add as many items as needed to the `translate` object.<br />
 **key:** a breakpoint value to be applied to `@media (min-width: xx)`<br />
 **value:** a value to be applied to translate function. `(units: vw or px)`
 
-## Default Settings
+## Settings
 | Options | Default
 :--- | :---
+| `orientation` | `'left' or 'right'`
 | `translate` | `{'992px':'35vw', 768px':'50vw', 'default':'100vw'}`
 | `transition-duration` | `'.5s'`
 
 ### Callbacks
 ```javascript
 // called before animation starts
-onBefore: function(event, element) {}   // event: open, close     (string)
-                                        // element: `.sidepanel`  (DOM node)
+onBefore: function(event, element) {}   // event: 'open', 'close'  (string)
+                                        // element: .sidepanel     (DOM node)
 
 // called after animation ends
-onAfter: function(event, element) {}    // event: open, close     (string)
-                                        // element: `.sidepanel`  (DOM node)
+onAfter: function(event, element) {}    // event: 'open', 'close'  (string)
+                                        // element: .sidepanel     (DOM node)
 ```
 
 ### HTML data-attribute
