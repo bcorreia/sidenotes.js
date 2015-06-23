@@ -9,7 +9,7 @@ var Sidenotes = (function() {
     'use strict';
 
     var defaults = {
-        orientation: 'left',
+        orientation: 'right',
         translate: {
             '992px'   : '35vw',
             '768px'   : '50vw',
