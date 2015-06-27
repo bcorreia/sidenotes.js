@@ -8,7 +8,7 @@ Add sidenote capabilities to your page.<br />
 [**Demo**](http://bcorreia.com/projects/sidenotes.js/src/demo.html)
 
 ## Getting Started
-You may install sidenotes.js using package managers, or download project [archive](https://github.com/bcorreia/sidenotes.js/archive/master.zip).<br />
+You may install ***sidenotes.js*** using the following package managers.<br />
 ```bash
 bower install sidenotes.js
 npm install sidenotes.js
@@ -21,25 +21,23 @@ npm install sidenotes.js
 ```javascript
 var page = document.querySelector('.page'),
     sidenotes = new Sidenotes(page, {
-        orientation: 'right',
-        translate: {
-            '992px'   : '35vw',
-            '768px'   : '50vw',
-            'default' : '100vw'
-        },
-        'transition-duration': '.5s'
+        // settings
     });
 ```
-Add as many items as needed to the `translate` object.<br />
-**key:** Breakpoint value. `@media (min-width: xx)`<br />
-**value:** Sidenote width. `(units: vw or px)`
 
-## Settings
-| Options | Default
-:--- | :---
-| `orientation` | `'left' or 'right'`
-| `translate` | `{ '992px': '35vw', 768px': '50vw', 'default': '100vw' }`
-| `transition-duration` | `'.5s'`
+## Default Settings
+```javascript
+orientation: 'right',               // left or right
+duration: '.5s',                    // transition duration
+width: {                            // breakpoints, sidenote width
+    '992px'   : '35vw',
+    '768px'   : '50vw',
+    'default' : '100vw'
+}
+```
+Add as many breakpoints as needed to the `width` object.<br />
+**key:** breakpoint value `@media (min-width: xx)`<br />
+**value:** sidenote width `(units: vw or px)`
 
 ### Callbacks
 ```javascript
@@ -56,14 +54,13 @@ onAfter: function(event, element) {}    // event: 'open', 'close'  (string)
 Add `data-sidenote` attribute to any element in your document.
 ```html
 <!-- examples -->
-<a href="#" data-sidenote="A feeling of surprise.">Wonder</a>
-<button data-sidenote="Greeting to begin a conversation.">Hello</button>
+<a href="#" data-sidenote=" … ">Wonder</a>
+<button data-sidenote=" … ">Wonde</button>
 ```
 
 ### CSS
 The following classes are available:
 ```css
-/* optional */
 .sidenote .-inner    { … } /* sidenote direct child  */
 .sidenote .-close    { … } /* sidenote close button */
 ```

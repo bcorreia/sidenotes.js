@@ -3,12 +3,12 @@ var Sidenotes = (function() {
 
     var defaults = {
         orientation: 'right',
-        translate: {
+        duration: '.5s',
+        width: {
             '992px'   : '35vw',
             '768px'   : '50vw',
             'default' : '100vw'
         },
-        'transition-duration': '.5s',
         onBefore: function() {},
         onAfter: function() {}
     };
@@ -16,12 +16,12 @@ var Sidenotes = (function() {
     var methods = {
         open: function(note) {
             var settings = this.settings,
-                translate = settings.translate['default'],
+                translate = settings.width['default'],
                 operator;
 
-            for ( var prop in settings.translate ) {
+            for ( var prop in settings.width ) {
                 if (window.matchMedia('(min-width: '+ prop +')').matches) {
-                    translate = settings.translate[prop];
+                    translate = settings.width[prop];
                     break;
                 }
             }
@@ -40,7 +40,7 @@ var Sidenotes = (function() {
                 '-webkit-transform': 'translateX('+ operator + translate +')',
                 '-moz-transform': 'translateX('+ operator + translate +')',
                 'transform': 'translateX('+ operator + translate +')',
-                'transition': 'all ' + settings['transition-duration']
+                'transition': 'all ' + settings.duration
             });
 
             sidenote.className = 'sidenote';
