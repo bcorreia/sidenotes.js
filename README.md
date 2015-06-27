@@ -31,14 +31,14 @@ var page = document.querySelector('.page'),
     });
 ```
 Add as many items as needed to the `translate` object.<br />
-**key:** a breakpoint value to be applied to `@media (min-width: xx)`<br />
-**value:** a value to be applied to translate function. `(units: vw or px)`
+**key:** Breakpoint value. `@media (min-width: xx)`<br />
+**value:** Sidenote width. `(units: vw or px)`
 
 ## Settings
 | Options | Default
 :--- | :---
 | `orientation` | `'left' or 'right'`
-| `translate` | `{'992px':'35vw', 768px':'50vw', 'default':'100vw'}`
+| `translate` | `{ '992px': '35vw', 768px': '50vw', 'default': '100vw' }`
 | `transition-duration` | `'.5s'`
 
 ### Callbacks
@@ -53,20 +53,19 @@ onAfter: function(event, element) {}    // event: 'open', 'close'  (string)
 ```
 
 ### HTML data-attribute
-Add `data-sidenote` attribute to any element(s) in your document.
+Add `data-sidenote` attribute to any element in your document.
 ```html
-<!-- example -->
+<!-- examples -->
 <a href="#" data-sidenote="A feeling of surprise.">Wonder</a>
-<a href="#" data-sidenote="Greeting to begin a conversation.">Hello</a>
+<button data-sidenote="Greeting to begin a conversation.">Hello</button>
 ```
 
 ### CSS
-The following classes are inserted by default:
+The following classes are available:
 ```css
 /* optional */
-.sidenote            { display:flex; align-items:center; justify-content:center; }
-.sidenote .-inner    { … }
-.sidenote .-close    { … } /* closes sidenote on `click` event */
+.sidenote .-inner    { … } /* sidenote direct child  */
+.sidenote .-close    { … } /* sidenote close button */
 ```
 ---
 
