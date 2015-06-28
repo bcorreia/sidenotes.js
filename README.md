@@ -59,8 +59,8 @@ onAfter: function(event, element) {   // called after animation ends
 Add `data-sidenote` attribute to any element within the selected scope.
 ```html
 <!-- examples -->
-<a href="#" data-sidenote=" … ">Wonder</a>
-<button data-sidenote=" … ">Wonde</button>
+<a href="#" data-sidenote="…">Text</a>
+<button data-sidenote="…">Text</button>
 ```
 
 ### CSS
