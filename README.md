@@ -14,10 +14,11 @@ bower install sidenotes.js
 npm install sidenotes.js
 
 # sidenotes.min.js (minified version)
-# no dependencies required
 ```
 
 ## Usage
+> jQuery is **not** required
+
 ```javascript
 var sidenotes = new Sidenotes(document.body, {
     // settings
