@@ -8,7 +8,7 @@ Add sidenote capabilities to your page.<br />
 [**Demo**](http://bcorreia.com/projects/sidenotes.js/src/demo.html)
 
 ## Getting Started
-You may install ***sidenotes.js*** using the following package managers.<br />
+You may install sidenotes.js using package managers.<br />
 ```bash
 bower install sidenotes.js
 npm install sidenotes.js
@@ -19,39 +19,44 @@ npm install sidenotes.js
 
 ## Usage
 ```javascript
-var page = document.querySelector('.page'),
-    sidenotes = new Sidenotes(page, {
-        // settings
-    });
+var sidenotes = new Sidenotes(document.body, {
+    // settings
+});
+
+// alternatively
+var sidenotes = new Sidenotes(document.querySelector('.scope'), {
+    // settings
+});
 ```
 
 ## Default Settings
 ```javascript
-orientation: 'right',               // left or right
-duration: '.5s',                    // transition duration
-width: {                            // breakpoints, sidenote width
-    '992px'   : '35vw',
-    '768px'   : '50vw',
-    'default' : '100vw'
-}
+orientation: 'right',                 // left or right (string)
+duration: '.5s',                      // transition duration (string)
+width: {
+    '992px'   : '35vw',               // add as many breakpoints as needed
+    '768px'   : '50vw',               // key: `min-width` media-query value
+    'default' : '100vw'               // value: sidenote width in `vw or px`
+},
+onBefore: function() {},
+onAfter: function() {}
 ```
-Add as many breakpoints as needed to the `width` object.<br />
-**key:** breakpoint value `@media (min-width: xx)`<br />
-**value:** sidenote width `(units: vw or px)`
 
 ### Callbacks
 ```javascript
-// called before animation starts
-onBefore: function(event, element) {}   // event: 'open', 'close'  (string)
-                                        // element: .sidepanel     (DOM node)
+onBefore: function(event, element) {  // called before animation starts
+    // event 'open' or 'close'
+    // element '.sidepanel'
+}
 
-// called after animation ends
-onAfter: function(event, element) {}    // event: 'open', 'close'  (string)
-                                        // element: .sidepanel     (DOM node)
+onAfter: function(event, element) {   // called after animation ends
+    // event 'open' or 'close'
+    // element '.sidepanel'
+}
 ```
 
 ### HTML data-attribute
-Add `data-sidenote` attribute to any element in your document.
+Add `data-sidenote` attribute to any element within the selected scope.
 ```html
 <!-- examples -->
 <a href="#" data-sidenote=" … ">Wonder</a>

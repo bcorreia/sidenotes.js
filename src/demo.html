@@ -43,13 +43,13 @@
 
     <script src="./js/sidenotes.js"></script>
     <script>
-        var sidenotes = new Sidenotes(document.querySelector('.page'), {
-            translate: {
+        var sidenotes = new Sidenotes(document.body, {
+            duration: '.5s',
+            width: {
                 '992px'   : '35vw',
                 '768px'   : '50vw',
                 'default' : '100vw'
             },
-            'transition-duration': '.5s',
             onBefore: function(event, element) {
                 console.log("onBefore: " + event);
                 console.log(element);
