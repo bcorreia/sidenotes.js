@@ -34,9 +34,9 @@ var sidenotes = new Sidenotes(document.querySelector('.scope'), {
 orientation: 'right',                 // left or right (string)
 duration: '.5s',                      // transition duration (string)
 width: {
-    '992px'   : '35vw',               // add as many breakpoints as needed
-    '768px'   : '50vw',               // keys: `min-width` media-query values
-    'default' : '100vw'               // values: width in `vw or px`
+    '992px': '35vw',                  // add as many breakpoints as needed
+    '768px': '50vw',                  // keys: `min-width` media-query values
+    'default': '100vw'                // values: width in `vw or px`
 },
 onBefore: function() {},
 onAfter: function() {}
@@ -64,7 +64,7 @@ Add `data-sidenote` attribute to any element within the selected scope.
 ```
 
 ### CSS
-The following classes are available:
+Available classes:
 ```css
 .sidenote .-inner    { … } /* sidenote direct child  */
 .sidenote .-close    { … } /* sidenote close button */
