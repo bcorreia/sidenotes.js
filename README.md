@@ -31,12 +31,12 @@ var sidenotes = new Sidenotes(document.querySelector('.scope'), {
 
 ## Default Settings
 ```javascript
-orientation: 'right',                 // left or right (string)
-duration: '.5s',                      // transition duration (string)
+orientation: 'right',                 // left, right
+duration: '.5s',                      // transition duration
 width: {
-    '992px': '35vw',                  // add as many breakpoints as needed
-    '768px': '50vw',                  // keys: `min-width` media-query values
-    'default': '100vw'                // values: width in `vw or px`
+    '992px': '35vw',                  // keys: min-width media query values
+    '768px': '50vw',                  // values: sidenote width in `vw or px`
+    'default': '100vw'                // add as many breakpoints as needed
 },
 onBefore: function() {},
 onAfter: function() {}
