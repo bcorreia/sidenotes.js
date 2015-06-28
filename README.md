@@ -35,8 +35,8 @@ orientation: 'right',                 // left or right (string)
 duration: '.5s',                      // transition duration (string)
 width: {
     '992px'   : '35vw',               // add as many breakpoints as needed
-    '768px'   : '50vw',               // key: `min-width` media-query value
-    'default' : '100vw'               // value: sidenote width in `vw or px`
+    '768px'   : '50vw',               // keys: `min-width` media-query values
+    'default' : '100vw'               // values: width in `vw or px`
 },
 onBefore: function() {},
 onAfter: function() {}
