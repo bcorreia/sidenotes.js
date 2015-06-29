@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/bcorreia/sidenotes.js.svg?branch=master)](https://travis-ci.org/bcorreia/sidenotes.js)
 
 ---
-Add sidenote capabilities to your page.<br />
+Add sidenotes capabilities to your page.<br />
 [**Demo**](http://bcorreia.com/projects/sidenotes.js/src/demo.html)
 
 ## Getting Started
