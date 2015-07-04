@@ -2,6 +2,7 @@ var Sidenotes = (function() {
     'use strict';
 
     var defaults = {
+        note: undefined,
         orientation: 'right',
         duration: '.5s',
         width: {
@@ -17,6 +18,7 @@ var Sidenotes = (function() {
         open: function(note) {
             var settings = this.settings,
                 translate = settings.width['default'],
+                note = settings.note || note,
                 operator;
 
             for ( var prop in settings.width ) {
@@ -165,6 +167,16 @@ var Sidenotes = (function() {
                 sidenotes.open(note);
             });
         });
+
+        // alias: public method
+        this.open = function(note) {
+            sidenotes.open(note);
+        }
+
+        // alias: public method
+        this.close = function() {
+            sidenotes.close(document.querySelector('body > .sidenote'));
+        }
     }
 
     return Sidenotes;

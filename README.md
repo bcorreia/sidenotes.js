@@ -32,6 +32,7 @@ var sidenotes = new Sidenotes(document.querySelector('.scope'), {
 
 ## Default Settings
 ```javascript
+note: undefined,
 orientation: 'right',                 // left, right
 duration: '.5s',                      // transition duration
 width: {
@@ -42,6 +43,7 @@ width: {
 onBefore: function() {},
 onAfter: function() {}
 ```
+If a specific `note` value is provided, it will be used, otherwise it defaults to the `data-sidenote` attribute value.
 
 ### Callbacks
 ```javascript
@@ -62,6 +64,12 @@ Add `data-sidenote` attribute to any element within the selected scope.
 <!-- examples -->
 <a href="#" data-sidenote="…">Text</a>
 <button data-sidenote="…">Text</button>
+```
+
+### Public Methods
+```javascript
+.open(note);           // @param: note (string)
+.close();              // @param: ø
 ```
 
 ### CSS
