@@ -72,6 +72,8 @@ var Sidenotes = (function() {
                 }, 100), false);
             }
 
+            settings.note ?
+            sidenote.innerHTML = '<div class="-inner">' + btn + note + '</div>':
             sidenote.innerHTML = '<div class="-inner">' + btn + '<p>' + note + '</p></div>';
             document.body.insertBefore(sidenote, document.body.firstChild); // prepend
 
