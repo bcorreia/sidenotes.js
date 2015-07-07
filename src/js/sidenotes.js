@@ -46,6 +46,20 @@ var Sidenotes = (function() {
                 'transition': 'all ' + settings.duration
             });
 
+            // if IE
+            // function isIE(userAgent) {
+            //   userAgent = userAgent || navigator.userAgent;
+            //   return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1;
+            // }
+
+            // if ( navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0 ) {
+            //     // isIE = true;
+            // }
+
+            if ( navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1 ) {
+                translate = 0;
+            }
+
             sidenote.className = 'sidenote';
             operator = '';
             (settings.orientation === 'right') ? sidenote.style.right = 0 : operator = "-";
