@@ -48,6 +48,7 @@ var Sidenotes = (function() {
                 'overflow': 'hidden',
                 '-webkit-transform': 'translateX('+ operator + translate +')',
                 '-moz-transform': 'translateX('+ operator + translate +')',
+                '-ms-transform': 'translateX('+ operator + translate +')',
                 'transform': 'translateX('+ operator + translate +')',
                 'transition': 'all ' + settings.duration
             });
@@ -62,6 +63,7 @@ var Sidenotes = (function() {
                 'width': translate,
                 '-webkit-transform': 'translateX('+ operator + translate +')',
                 '-moz-transform': 'translateX('+ operator + translate +')',
+                '-ms-transform': 'translateX('+ operator + translate +')',
                 'transform': 'translateX('+ operator + translate +')'
             });
 
@@ -96,6 +98,7 @@ var Sidenotes = (function() {
             addStyles(document.body, {
                 '-webkit-transform': 'translateX(0)',
                 '-moz-transform': 'translateX(0)',
+                '-ms-transform': 'translateX(0)',
                 'transform': 'translateX(0)'
             });
 
