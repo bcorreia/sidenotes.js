@@ -12,7 +12,8 @@ var Sidenotes = (function() {
         },
         onBefore: function() {},
         onAfter: function() {}
-    };
+    },
+    html = document.querySelector('html');
 
     var methods = {
         open: function(note) {
@@ -32,12 +33,12 @@ var Sidenotes = (function() {
                 btn = '<a href="#" class="text-hide -close">Close</a>';
 
             var callback = function() {
-                document.body.removeEventListener('transitionend', callback, false);
+                html.removeEventListener('transitionend', callback, false);
                 return settings.onAfter("open", sidenote); // callback fn
             }.bind(this);
 
             operator = (settings.orientation === 'right') ? "-" : "";
-            addStyles(document.body, {
+            addStyles(html, {
                 'overflow': 'hidden',
                 '-webkit-transform': 'translateX('+ operator + translate +')',
                 '-moz-transform': 'translateX('+ operator + translate +')',
@@ -45,20 +46,6 @@ var Sidenotes = (function() {
                 'transform': 'translateX('+ operator + translate +')',
                 'transition': 'all ' + settings.duration
             });
-
-            // if IE
-            // function isIE(userAgent) {
-            //   userAgent = userAgent || navigator.userAgent;
-            //   return userAgent.indexOf("MSIE ") > -1 || userAgent.indexOf("Trident/") > -1;
-            // }
-
-            // if ( navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0 ) {
-            //     // isIE = true;
-            // }
-
-            if ( navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1 ) {
-                translate = 0;
-            }
 
             sidenote.className = 'sidenote';
             operator = '';
@@ -91,25 +78,25 @@ var Sidenotes = (function() {
                 this.close(sidenote);
             }.bind(this));
 
-            document.body.addEventListener('transitionend', callback, false);
+            html.addEventListener('transitionend', callback, false);
             return this.settings.onBefore("open", sidenote); // callback fn
         },
 
         close: function(sidenote) {
             var callback = function() {
-                document.body.style.cssText = '';
-                document.body.removeEventListener('transitionend', callback, false);
+                html.style.cssText = '';
+                html.removeEventListener('transitionend', callback, false);
                 return this.settings.onAfter("close", sidenote); // callback fn
             }.bind(this);
 
-            addStyles(document.body, {
+            addStyles(html, {
                 '-webkit-transform': 'translateX(0)',
                 '-moz-transform': 'translateX(0)',
                 '-ms-transform': 'translateX(0)',
                 'transform': 'translateX(0)'
             });
 
-            document.body.addEventListener('transitionend', callback, false);
+            html.addEventListener('transitionend', callback, false);
             return this.settings.onBefore("close", sidenote); // callback fn
         }
     }
