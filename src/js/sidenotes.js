@@ -46,11 +46,17 @@ var Sidenotes = (function() {
                 'transition': 'all ' + settings.duration
             });
 
+            // ie, use position absolute instead of fixed, go figure
+            var position = 'fixed';
+            if ( navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1 ) {
+                position = 'absolute';
+            }
+
             sidenote.className = 'sidenote';
             operator = '';
             (settings.orientation === 'right') ? sidenote.style.right = 0 : operator = "-";
             addStyles(sidenote, {
-                'position': 'fixed',
+                'position': position,
                 'top': (window.scrollY + 'px'), // fixed top position while using translate
                 'height': '100vh',
                 'width': translate,
