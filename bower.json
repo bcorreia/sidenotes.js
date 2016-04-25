@@ -1,7 +1,7 @@
 {
   "name": "sidenotes.js",
   "description": "Add sidenote capabilities to your page.",
-  "version": "1.5",
+  "version": "1.5.0",
   "authors": [
     "Bruno Correia <mail@bcorreia.com>"
   ],

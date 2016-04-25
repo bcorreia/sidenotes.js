@@ -1,12 +1,12 @@
 /**
- * sidenotes.js - version 1.5
+ * sidenotes.js - version 1.5.0
  *
  * https://github.com/bcorreia/sidenotes.js.git
  * Bruno Correia - mail@bcorreia.com
  *
  */
 /**
- * sidenotes.js - version 1.5
+ * sidenotes.js - version 1.5.0
  *
  * https://github.com/bcorreia/sidenotes.js.git
  * Bruno Correia - mail@bcorreia.com
