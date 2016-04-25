@@ -35,6 +35,9 @@ var sidenotes = new Sidenotes(document.querySelector('.scope'), {
 note: undefined,
 orientation: 'right',                 // left, right
 duration: '.5s',                      // transition duration
+overflow: 'hidden',                   // visible or hidden
+duration: '.5s',                      // transition duration
+height: '100vh'
 width: {
     '992px': '35vw',                  // keys: min-width media query values
     '768px': '50vw',                  // values: sidenote width in `vw or px`

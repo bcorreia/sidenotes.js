@@ -1,3 +1,10 @@
+/**
+ * sidenotes.js - version 1.5
+ *
+ * https://github.com/bcorreia/sidenotes.js.git
+ * Bruno Correia - mail@bcorreia.com
+ *
+ */
 var Sidenotes = (function() {
     'use strict';
 
@@ -5,6 +12,8 @@ var Sidenotes = (function() {
         note: undefined,
         orientation: 'right',
         duration: '.5s',
+        overflow: 'hidden',
+        height: '100vh',
         width: {
             '992px'   : '35vw',
             '768px'   : '50vw',
@@ -38,7 +47,7 @@ var Sidenotes = (function() {
 
             operator = (settings.orientation === 'right') ? "-" : "";
             addStyles(document.body, {
-                'overflow': 'hidden',
+                'overflow': settings.overflow,
                 '-webkit-transform': 'translateX('+ operator + translate +')',
                 '-moz-transform': 'translateX('+ operator + translate +')',
                 '-ms-transform': 'translateX('+ operator + translate +')',
@@ -46,7 +55,7 @@ var Sidenotes = (function() {
                 'transition': 'all ' + settings.duration
             });
 
-            // ie, use position absolute instead of fixed, go figure
+            // for ie
             var position = 'fixed';
             if ( navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1 ) {
                 position = 'absolute';
@@ -58,7 +67,7 @@ var Sidenotes = (function() {
             addStyles(sidenote, {
                 'position': position,
                 'top': (window.scrollY + 'px'), // fixed top position while using translate
-                'height': '100vh',
+                'height': settings.height,
                 'width': translate,
                 '-webkit-transform': 'translateX('+ operator + translate +')',
                 '-moz-transform': 'translateX('+ operator + translate +')',
