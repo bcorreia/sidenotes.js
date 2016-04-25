@@ -1,12 +1,12 @@
 /**
- * sidenotes.js - version 1.5.0
+ * sidenotes.js - version 1.5.1
  *
  * https://github.com/bcorreia/sidenotes.js.git
  * Bruno Correia - mail@bcorreia.com
  *
  */
 /**
- * sidenotes.js - version 1.5.0
+ * sidenotes.js - version 1.5.1
  *
  * https://github.com/bcorreia/sidenotes.js.git
  * Bruno Correia - mail@bcorreia.com
@@ -20,6 +20,7 @@ var Sidenotes = (function() {
         orientation: 'right',
         duration: '.5s',
         overflow: 'hidden',
+        position: 'fixed',
         height: '100vh',
         width: {
             '992px'   : '35vw',
@@ -62,17 +63,17 @@ var Sidenotes = (function() {
                 'transition': 'all ' + settings.duration
             });
 
-            // for ie
-            var position = 'fixed';
-            if ( navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1 ) {
-                position = 'absolute';
+            if ( settings.position === 'fixed ') {
+                if ( navigator.userAgent.indexOf("MSIE ") > -1 || navigator.userAgent.indexOf("Trident/") > -1 ) {
+                    settings.position = 'absolute';
+                }
             }
 
             sidenote.className = 'sidenote';
             operator = '';
             (settings.orientation === 'right') ? sidenote.style.right = 0 : operator = "-";
             addStyles(sidenote, {
-                'position': position,
+                'position': settings.position,
                 'top': (window.scrollY + 'px'), // fixed top position while using translate
                 'height': settings.height,
                 'width': translate,
@@ -85,7 +86,7 @@ var Sidenotes = (function() {
             // little hack for safari
             if ( !navigator.userAgent.match(/Chrome|Firefox/) ) {
                 window.addEventListener("scroll", debounce(function() {
-                    sidenote.style.top = (window.scrollY + "px");
+                    sidenote.style.top = (settings.position === 'fixed') ? (window.scrollY + 'px') : 0
                 }, 100), false);
             }
 

@@ -36,6 +36,7 @@ note: undefined,
 orientation: 'right',                 // left, right
 duration: '.5s',                      // transition duration
 overflow: 'hidden',                   // visible or hidden
+position: 'fixed',                    // fixed or absolute
 duration: '.5s',                      // transition duration
 height: '100vh'
 width: {
